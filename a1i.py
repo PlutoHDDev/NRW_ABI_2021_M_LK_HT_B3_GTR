@@ -25,6 +25,14 @@ def g(t):
     return 1 + 4 * t, 3 + (-2) * t, 4 + (-1) * t
 
 
+def calculate_secret(ax, ay, az, bx, by, bz, cx, cy, cz):
+    # Calculate the parameters
+    m, n, t = calculate_parameters(ax, ay, az, bx, by, bz, cx, cy, cz)
+    # Calculate the secret code
+    x, y, z = g(t)
+    return x, y, z
+
+
 if __name__ == '__main__':
     # Ask for Code a
     ax = int(input("Enter the first digit of the first code: "))
@@ -38,9 +46,7 @@ if __name__ == '__main__':
     cx = int(input("Enter the first digit of the third code: "))
     cy = int(input("Enter the second digit of the third code: "))
     cz = int(input("Enter the third digit of the third code: "))
-    # Calculate the parameters
-    m, n, t = calculate_parameters(ax, ay, az, bx, by, bz, cx, cy, cz)
     # Calculate the secret code
-    x, y, z = g(t)
+    x, y, z = calculate_secret(ax, ay, az, bx, by, bz, cx, cy, cz)
     # Print the secret code
-    print('Secret code is:', x, y, z)
+    print('Secret code is:', str(x) + '' + str(y) + '' + str(z))
